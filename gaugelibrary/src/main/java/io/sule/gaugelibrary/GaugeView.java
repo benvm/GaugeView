@@ -695,7 +695,7 @@ public class GaugeView extends View {
             final float value = getValueForTick(i);
             final Paint paint = getRangePaint(value);
 
-            float div = mScaleEndValue / (float) mDivisions;
+            float div = (mScaleEndValue - mScaleStartValue) / (float) mDivisions;
             float mod = value % div;
             if ((Math.abs(mod - 0) < 0.001) || (Math.abs(mod - div) < 0.001)) {
                 // Draw a division tick
@@ -780,7 +780,7 @@ public class GaugeView extends View {
     }
 
     private float getValueForTick(final int tick) {
-        return tick * (mDivisionValue / mSubdivisions);
+        return (tick * (mDivisionValue / mSubdivisions)) + mScaleStartValue;
     }
 
     private Paint getRangePaint(final float value) {
