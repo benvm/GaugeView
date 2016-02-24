@@ -838,7 +838,7 @@ public class GaugeView extends View {
     }
 
     private float getAngleForValue(final float value) {
-        return (mScaleRotation + (value / mSubdivisionValue) * mSubdivisionAngle) % 360;
+        return (mScaleRotation + (value - mScaleStartValue ) / mSubdivisionValue * mSubdivisionAngle) % 360;
     }
 
     private void computeCurrentValue() {
